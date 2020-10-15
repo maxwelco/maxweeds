@@ -1,7 +1,7 @@
 +++
 abstract = ""
 
-authors = ["Carolina Alves Gomes", "Marcelo Rodrigues dos Reis", "Matheus Majela de Jesus Silva", "Gustavo Antonio Mendes Pereira", "maxwel"]
+authors = ["Carolina Alves Gomes", "Marcelo Rodrigues dos Reis", "Matheus Majela de Jesus Silva", "Gustavo Antonio Mendes Pereira", "Maxwel Coura Oliveira"]
 date = "2020-06-01"
 image_preview = ""
 math = true

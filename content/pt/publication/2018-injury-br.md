@@ -1,7 +1,7 @@
 +++
 abstract = ""
 
-authors = ["Rodrigo Werle", "maxwel"]
+authors = ["Rodrigo Werle", "Maxwel Coura Oliveira"]
 date = "2018-09-01"
 image_preview = ""
 math = true

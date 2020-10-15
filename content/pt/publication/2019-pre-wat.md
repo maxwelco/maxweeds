@@ -1,7 +1,7 @@
 +++
 abstract = ""
 
-authors = ["Nicholas J. Arneson", "Daniel H. Smith", "Ryan DeWerff", "maxwel", "Rodrigo Werle"]
+authors = ["Nicholas J. Arneson", "Daniel H. Smith", "Ryan DeWerff", "Maxwel Coura Oliveira", "Rodrigo Werle"]
 date = "2019-11-30"
 image_preview = ""
 math = true

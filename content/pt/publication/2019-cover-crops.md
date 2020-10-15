@@ -1,7 +1,7 @@
 +++
 abstract = ""
 
-authors = ["Daniel H. Smith", "Mimi Broeske", "Jamie Patton", "Kevin Shelley",  "Francisco Arriaga", "Bryan Jensen", "maxwel", "Brian Briski", "Barry Bubolz", "Rachel Rushmann", "Heidi Johnson", "Gene Schriefer", "Mike Sorge"]
+authors = ["Daniel H. Smith", "Mimi Broeske", "Jamie Patton", "Kevin Shelley",  "Francisco Arriaga", "Bryan Jensen", "Maxwel Coura Oliveira", "Brian Briski", "Barry Bubolz", "Rachel Rushmann", "Heidi Johnson", "Gene Schriefer", "Mike Sorge"]
 date = "2019-04-28"
 image_preview = ""
 math = true
