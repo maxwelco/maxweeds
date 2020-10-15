@@ -1,14 +1,14 @@
 +++
 # A Demo section created with the Blank widget.
 # Any elements can be added in the body: https://sourcethemes.com/academic/docs/writing-markdown-latex/
-# Add more sections by duplicating this file and customizing to your requirements.
+# Add more sections by duplicating this file and customizing to your requirements. 
 
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true # Activate this widget? true/false
-weight = 20  # Order that this section will appear.
+weight = 10  # Order that this section will appear.
 
-title = "Lately"
+title = "About me"
 subtitle = ""
 
 [design]
@@ -29,15 +29,15 @@ subtitle = ""
   # gradient_end = "SkyBlue"
   
   # Background image.
-  image = ""  # Name of image in `static/img/`.
-  image_darken = 0.6  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
+  image = "flower.jpg"  # Name of image in `static/img/`.
+  image_darken = 0.2  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
 
   # Text color (true=light or false=dark).
-  text_color_light = false
+  text_color_light = true
 
 [design.spacing]
   # Customize the section spacing. Order is top, right, bottom, left.
-  padding = ["0px", "0", "20px", "0"]
+  padding = ["100px", "200px", "100px", "200px"]
 
 [advanced]
  # Custom CSS. 
