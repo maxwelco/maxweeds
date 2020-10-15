@@ -20,10 +20,8 @@ summary: 'A word cloud analysis of the United States Weed Science conference.'
 tags:
 - herbicide
 - word cloud
-authors:
+authors: 
 - maxwel
-- Sarah MM Marinho
-- Rodrigo Werle
 ---
 
 
