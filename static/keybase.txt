@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/maxwelco
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://maxweeds.rbind.io 
+  * I am maxwelco (https://keybase.io/maxwelco) on keybase.
+  * I have a public key with fingerprint 4864 0012 C43B 193F 2027  3F40 BAE4 F190 C1A3 82CF
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101a61ebb2b08bda98a8911e940d1db3ed1686c8b970e9738eaad2300a5fcee954c0a",
+      "fingerprint": "48640012c43b193f20273f40bae4f190c1a382cf",
+      "host": "keybase.io",
+      "key_id": "bae4f190c1a382cf",
+      "kid": "0101a61ebb2b08bda98a8911e940d1db3ed1686c8b970e9738eaad2300a5fcee954c0a",
+      "uid": "06ab205f540a85efffffdaa6afa47e19",
+      "username": "maxwelco"
+    },
+    "service": {
+      "hostname": "maxweeds.rbind.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1602243897,
+  "expire_in": 157680000,
+  "prev": "320a37fd85bd0783973c9133236781881389d87735dac50f246091f92586a384",
+  "seqno": 13,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMIjAnicrVJLSBVRGL5aWkmGJEEPyBosCkXPmTOPM1duC7XaWBK0KYrxzMwZHb3N
+XGeuei9280KPhVEtJLgRLqIuJNRCWohBZKVpBJm2EItUKCskpQeJPaTO9IAWLfs3
+h/Of7/vO93/8/blLAjkZ7yY+6KuK+uszHt7pbAqoyT1KK6c5RpwLtnIN9OdBwwb1
+omqDZXBBDkAAiQSppvEawJpBFEywAiFVBGBAQ0PUgBKWdKwpMqCKjDAlxOARAEQ0
+dUoVUdAB4Yo507JrqRtxLTvKZAUsCQBAXheQBhVk8oCXkSkAjVDBhArQIUGY101G
+rHM8n8HMacSjJZbDeuyi/rT3D/x/9t30S04iGg9EUxQAwSI1/TIIkYhJBJlCxQd6
+1LXJEcrQR0ishYZ1h0sUc6zbbOnUD9af5G8ENbwSV7Ns49dQEdeJOroTZs910WjE
+C/r0aDzi41uopv5WUn0GC5MxmqnrWY7NBSFD6lHLl4YS4HkBYUUu5mgsYrlUtXyE
+KEsYsPL/oc1MEvGAINk0sKgZQMaIZaArECEeSTKGGEOmYWBZRqJBdBGYvCABBZoK
+L2KJhS1w/myNtsO0EfNJapmmZ9XaJNrkUi5xt+/Q0kBGTiA7K9PfskDOirw/uzcU
+WraYPzf6rHVR336053gqMbjVCm65eb10JlE/EzwYym6cPqWebHkAQtzmxg+bb/er
+23ZeEToKqlYb9rsLC+bMvYp09a2673sqL2ZeT+aFe1Pz618n5jY4HwvTBSNf24Sx
+r/cHYPrqOS/2pSq/2ppNf8vtHzgeej+Pls/GzeR4V7K8uoGceozKDj05o02OxDJS
+L27MpycKXLxQvun0pw6+7MR0t/2ovKJN2L2/KLKmq/3tsUuVPW87h+fQy8PJveci
+n++UFhfVZE/WlGQdqNwxPHk+FW8vo08XXq0dnHpzrW/88tjnqd7SzsqGmtGK7ueF
+1fvcrpVtQ+v0jbPdobR6dtcP1shJrw==
+=RiGa
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/maxwelco
+
+==================================================================
