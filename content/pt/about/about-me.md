@@ -48,15 +48,21 @@ subtitle = ""
 +++
 
 
-Eu sou natural de Ipatinga, Minas Gerais. Estudei Agronomia na graduação e mestrado em Produção Vegetal na [Universidade Federal dos Vales do Jequitinhonha e Mucuri](http://www.ufvjm.edu.br/). Recebi meu PhD em Agronomia & Planta Daninha na Universidade de Nebraska-Lincoln em 2017. Também, durante a graduação fiz intercâmbio nos Estados Unidos pelo [The Ohio Program](https://top.osu.edu/).
+Eu sou natural de Ipatinga, Minas Gerais. Estudei Agronomia na graduação e mestrado em Produção Vegetal na [Universidade Federal dos Vales do Jequitinhonha e Mucuri](http://www.ufvjm.edu.br/). Recebi meu PhD em Agronomia & Planta Daninha na [Universidade de Nebraska-Lincoln](https://www.unl.edu/) em 2017. 
+
 
 <img src="max-wisc.jpg" class="center-block" alt="Lab meeting" style="width:60%;">
+
+
+Minha primeira experiência nos Estados Unidos foi durante a graduação através de um intercâmbio nos Estados Unidos pelo [The Ohio Program](https://top.osu.edu/). Trabalhei com horticultura em uma fazenda em Michigan e em estufas de tomates hidropônicos em Nova Iorque.
+
+<img src="young.jpg" class="center-block" alt="Lab meeting" style="width:60%;">
 
 Minha [pesquisa](https://profiles.impactstory.org/u/0000-0001-5398-1234) é focada no manejo de plantas daninhas em agro e ecossistemas naturais. Eu escrevi e colaborei em muitas [publicaçōes](/pt/publication) cietíficas sobre avaliaçōes, manejo, ecologia, biologia e resistência de plantas daninhas. Tambem aprensentei e colaborei em vários trabalhos em conferências internacionais.
 
 <img src="meeting-max.png" class="center-block" alt="OHSU Research Week Poster" style="width:60%;">
 
-Em Nebraska, comecei a analisar meus experimentos com programas estatísticos da linguaguem SAS e R. Desenvolvi uma paixão pela linguagem R, sendo que já ministrei [workshops](/categories/workshop/) em congresso e dou aulas para pós-graduação com o tema R.
+Em Nebraska, comecei a analisar meus experimentos com programas estatísticos da linguaguem SAS e R. Desenvolvi uma paixão pela linguagem R, sendo que já ministrei workshops em congresso e dou aulas para pós-graduação com programação em R.
 
 <img src="teaching.jpeg" class="center-block" alt="ROpenSci Unconference" style="width:60%;">
 
