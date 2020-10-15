@@ -1,7 +1,4 @@
 ---
-authors:
-- maxwel
-- Gustavo Antônio Mendes Pereira
 categories: []
 date: "2020-4-24T00:00:00Z"
 draft: false

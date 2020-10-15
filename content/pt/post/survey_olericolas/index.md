@@ -4,8 +4,6 @@
 title: "Levantamento do Manejo de Plantas Daninhas na Olericultura"
 subtitle: ""
 summary: "Um questionário focado no manejo de plantas daninhas no cultivo da cebola, alho, cenoura, repolho e outras olerícolas"
-authors: 
-- maxwel
 
 tags: 
 - Questionário

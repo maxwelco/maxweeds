@@ -1,7 +1,4 @@
 ---
-authors:
-- maxwel
-- Rodrigo Werle
 categories: []
 date: "2018-03-15T00:00:00Z"
 draft: false

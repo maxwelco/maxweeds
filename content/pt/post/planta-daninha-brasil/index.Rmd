@@ -1,7 +1,4 @@
 ---
-authors:
-- maxwel
-- Rodrigo Werle
 categories: []
 date: "2020-09-03T00:00:00Z"
 draft: false
@@ -20,6 +17,7 @@ tags:
 title: 'Avaliação das Estratégias de Manejo de Culturas e Plantas Daninhas no Brasil'
 ---
 
+Por Maxwel Coura Oliveira e Rodrigo Werle.
 
 Em 2018 iniciamos um projeto com um [questionário sobre o manejo de culturas e plantas daninhas no Brasil](https://maxweeds.rbind.io/pt/post/survey-2018/). O questionário teve aproximadamente 350 participantes de todas as regiões do Brasil. As respostas dos participantes foram analisadas e o resultado acabou de ser publicado na revista [Weed Technology](https://www.cambridge.org/core/journals/weed-technology), da Sociedade Americana de Plantas Daninhas:
 

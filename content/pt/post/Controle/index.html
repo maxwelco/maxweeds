@@ -1,6 +1,4 @@
 ---
-authors:
-- maxwel
 categories: []
 date: "2020-05-19T00:00:00Z"
 draft: false
@@ -225,6 +223,10 @@ lsmeans</code></pre>
 <blockquote>
 <p>Função <em>CLD</em></p>
 </blockquote>
+<pre class="r"><code>cld &lt;-CLD(lsmeans, alpha=0.05, Letters=letters, adjust=&quot;none&quot;, reversed = TRUE)
+
+cld </code></pre>
+<p>Os códigos acima não estão funcionando na versão R mais recente. O motivo é explicado abaixo:</p>
 <div id="aviso" class="section level6">
 <h6>Aviso</h6>
 <pre><code>&quot;A função e os métodos do CLD estão obsoletos. Os agrupamentos de letras (CLD) incentivam uma interpretação enganosa do teste de significância por meio de agrupamento visual cujas comparações têm P&gt; alfa como se fossem iguais. No entanto, não provar que duas médias são diferentes não significa que as médias são iguais. Além disso, os CLDs fazem uma distinção difícil entre os valores de P quase iguais a alfa, mas em lados opostos.&quot;</code></pre>
@@ -248,12 +250,21 @@ lsmeans</code></pre>
   theme(axis.title = element_text(size=16),
         axis.text = element_text(size=15),
         legend.position = &quot;none&quot;) </code></pre>
-<p><img src="/pt/post/Controle/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="/pt/post/Controle/index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>As médias de controle de caruru (%) e o intervalo de confiança de cada herbicida são exibidos em uma figura do gráfico <em>ggplot</em>.</p>
 </div>
 <div id="gráfico-de-barras-com-agrupamento-de-letras" class="section level5">
 <h5>Gráfico de barras com agrupamento de letras</h5>
 <p>Se você gosta de apresentar os resultados em gráfico de barras com letras. Execute os codigos abaixo.</p>
+<pre class="r"><code>ggplot(cld, aes(x=herbicide, y=response*100, fill=herbicide, label=.group)) + 
+  geom_bar(stat=&quot;identity&quot;) + ylim(0,105) +
+  scale_fill_manual(values=c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;orange&quot;, &quot;purple&quot;)) +
+  theme_bw() +  labs(y=&quot;Waterhemp control (%)&quot;, x=&quot;Herbicides&quot;) +
+  geom_text(nudge_y = 7, size=8) + 
+  theme(axis.title = element_text(size=16),
+        axis.text = element_text(size=15),
+        legend.position = &quot;none&quot;) </code></pre>
+<p>Os códigos acima só serão executados se o <em>CLD</em> funcionar na sua versão R.</p>
 </div>
 </div>
 <div id="tabela" class="section level2">

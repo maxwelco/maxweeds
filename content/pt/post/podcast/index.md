@@ -1,6 +1,4 @@
 ---
-authors:
-- maxwel
 categories: []
 date: "2020-07-28T00:00:00Z"
 draft: false
