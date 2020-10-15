@@ -1,0 +1,319 @@
+---
+authors:
+- maxwel
+categories: []
+date: "2020-05-19T00:00:00Z"
+draft: false
+featured: false
+image:
+  caption: 'Imagem: [**Ruthson Zimmerman**](https://unsplash.com/photos/FVwG5OzPuzo)'
+  focal_point: ""
+  preview_only: false
+lastmod: "2020-05-19T00:00:00Z"
+projects: []
+subtitle: ''
+summary: Passo a posso com o uso da ANOVA para analisar o controle plantas daninhas
+tags:
+- ANOVA
+- Estatística
+title: 'Análise de Controle de Plantas Daninhas'
+---
+
+```{r include=FALSE}
+library(tidyverse) 
+library(glmmTMB)
+library(lme4)
+library(lmerTest)
+library(emmeans)
+library(RCurl)
+library(kableExtra)
+library(car)
+```
+
+
+O controle de plantas daninhas com herbicidas é um experimento comum realizado na pesquisa de plantas daninhas. Geralmente, os experimentos são organizados em delineamento em blocos casualizados com vários tratamentos (herbicidas). Dias após o tratamento (DAT), uma nota de controle em percentagem (%) é dada às plantas daninhas. A percentagem no controle de plantas daninhas varia de 0% (plantas sem injúrias) e 100% (plantas completamente controladas). Portanto, antes de iniciar os experimentos, o pesquisador sabe que os valores de controle variam entre 0 a 100%.
+
+Esta é uma análise estatística que não segue uma distribuição normal (gaussiana). A distribuição normal é uma premissa da ANOVA. Usaremos a *distribuição beta* (escala logit), que é uma família de distribuições de probabilidade contínuas definidas no intervalo 0 e 1. Para isso, as notas de controle de plantas daninhas devem ser alteradas para o intervalo 0 e 1. Por exemplo, se o controle de buva for 90%, ele deverá ser listado como 0,90 no seu arquivo de planilha. Além disso, a *distribuição beta* não aceita valores 0 e 1. Sendo assim, o controle de plantas daninhas de 0% e 100% deve ser alterado para 0,001 e 0,999, respectivamente.
+
+# Vamos começar
+
+- Baixe o programa **R** de acordo com seu sistema operacional: https://www.r-project.org
+
+- Baixe o programa **RStudio** de acordo com seu sistema operacional: https://rstudio.com
+
+## Crie um arquivo no R
+
+- Clique em  File -> New project... -> New directory -> New Project -> Salve o diretório de trabalho R onde quiser no seu laptop.
+
+O arquivo salvo terá um projeto do R e você deve copiar e colar todos os seus dados (ex.,arquivo excel) no mesmo diretório de trabalho criado.
+
+- Clique em Arquivo -> Novo arquivo -> script R (.R)
+
+ou
+
+- Clique em Arquivo -> Novo arquivo -> remarcação R ... (.Rmd)
+
+Embora eu goste de trabalhar no markdown R, o script R é mais fácil para iniciantes no Rstudio.
+
+## Instale os pacotes
+
+Copie e cole os seguintes códigos no seu aquivo .R ou .Rmd. 
+
+```
+install.packages(tidyverse)
+install.packages(glmmTMB)
+install.packages(lme4)
+install.packages(lmerTest)
+install.packages(emmeans)
+install.packages(RCurl)
+install.packages(car)
+install.packages(kableExtra)
+```
+
+Execute todos os códigos abaixo clicando na opção *Run* no canto superior direito do seu aquivo .R ou .Rmd. Esses códigos instalam os pacotes necessários para analisar experimentos de controle de plantas daninhas (%). Depois de instalar esses pacotes, você não precisará instalá-los toda vez que abrir o Rstudio, a menos que você atualize o R ou o Rstudio.
+
+
+## Dados
+
+
+```
+library(tidyverse)
+library(RCurl)
+```
+
+Os dados utilizados para o exercício são de um [artigo científico](https://www.doi.org/10.1017/wet.2016.4) de controle (%) de biótipo de  *Amaranthus tuberculatus* (vou chamar de caruru aqui) com herbicidas em pós-emergência. Os nomes dos herbicidas foram alterados para A, B, C, D e E. 
+
+Copie cole os seguintes códigos abaixo e execute no R.
+
+
+
+```{r}
+df_path <- getURL("https://raw.githubusercontent.com/maxwelco/General_codes/master/anova-beta/data/control.csv")
+
+dado <- read_csv(df_path)
+```
+
+Após executar os codigos acima, os dados deve estar armazenado no nome *dado*.
+
+```{r}
+dado
+```
+
+O aquivo *dado* possui o controle (control) de caruru com 5 trataments (herbicidas A, B, C, D, E), 2 anos (year, 2013 e 2014) e 3 blocos (rep).
+
+
+
+# Homogeneidade de variância
+
+Testa a hipótese nula de que a homogeneidade de variância entre cada ano são iguais.
+
+```
+library(car)
+```
+
+> Função Levene
+
+```{r}
+leveneTest(dado$control,  dado$herbicide)
+```
+
+
+Os resultados mostram o valor *P*-value = 0.7282, a hipótese nula é rejeitada, o que significa que as variações em cada ano são iguais.
+
+
+## Modelo
+
+- Execute os pacotes abaixo
+
+```
+library(glmmTMB)
+library(lme4)
+library(lmerTest)
+```
+
+- *Generalized Linear Mixed Models using Template Model Builder* de Mollie Brooks
+
+- Modelo misto
+
+- Familia beta com logit
+
+
+O modelo (*model*) tem control (controle) como variável resposta, herbicida como efeitos fixos e year (ano) (junto com rep) como efeitos aleatórios. 
+
+
+> Função *glmmTMB*
+
+
+```{r }
+model <- glmmTMB(control ~ herbicide + (1|year/rep), beta_family(link = "logit"), data=dado)
+```
+
+
+##  Anova
+
+
+- Execute o pacote abaixo
+
+
+> Função *Anova.glmmTMB* 
+
+```{r}
+glmmTMB:::Anova.glmmTMB(model)
+```
+
+O *P*-valor < 2.2e-16; existe evidência que é baixa a probabilidade de que uma diferença de alguma magnitude entre os herbicidas testados ocorre apenas por acaso, assumindo que a hipótese nula é verdadeira.
+
+***
+
+## Avaliando o controle de caruru com herbicidas 
+
+- Execute o pacote abaixo
+
+```
+library(emmeans)
+```
+
+
+#### Gráficos de interação para médias marginais estimadas (emmip)
+
+- type="response", herbicida e intervalos de confiança de volta da escala logit
+
+- coord_flip(), inverte os eixos x e y para melhor visualização
+
+> Função *emmip* 
+
+```{r}
+emmip(model, ~herbicide, type="response") + coord_flip()
+```
+
+Esta figura ajuda a visualizar o efeito do herbicida no controle de caruru. É mais útil em experiemnts de fatorial.
+
+#### Médias marginais estimadas (médias dos quadrados mínimos)
+
+- type="response", traz herbicida e intervalos de volta da escala logit
+
+- cont="pairwise", comparações entre cada tratamento com herbicida
+
+- adjust="none", diferença menos significativa de fisher (pode usar "tukey")
+
+A *lsmeans* forneceram os valores com o controle de plantas daninhas (prop), SE (erro padrão) e intervalos de confiança (lower.CL e upper.CL). Além disso, *lsmeans* fornece os contrastes aos pares entre tratamentos (herbicidas).
+
+> Função *emmeans* 
+
+```{r}
+lsmeans <- emmeans(model, ~ herbicide, cont="pairwise", adjust="none", type="response", alpha=0.05)
+
+lsmeans
+```
+
+
+#### Visualizar as médias de controle do caruru
+
+- comparisons=TRUE, comparações entre tratamentos com setas vermelhas
+
+- type="response", traz herbicida e intervalos de volta da escala logit
+
+- alpha=0.05, nível de significância a ser usado na construção de setas de comparação
+
+- adjust="none", diferença menos significativa de fisher (pode usar "tukey")
+
+> Função *plot* 
+
+```{r}
+plot(lsmeans, ~ herbicide, comparisons =TRUE, type="response", alpha=0.05, adjust="none")
+```
+
+O ponto preto é a média do controle do herbicida e o roxo é o intervalo de confiança. A seta vermelha é uma comparação entre tratamentos; se uma seta vermelha não se sobrepõe, os tratamentos são diferentes. Veja os contrastes de *lsmeans* para verificar novamente.
+
+## Extrair e exibir informações em todas as comparações pareadas de médias marginais estimadas
+
+- alpha=0.05, valor numérico que fornece o nível de significância para as comparações
+
+- Letters=letters, exibir tratamentos de agrupamento de letras de acordo com comparações pareadas
+
+- adjust="none", diferença menos significativa de fisher (pode usar "tukey")
+
+- reversed = TRUE, a ordem de uso das letras é invertida
+
+> Função *CLD* 
+
+```{r eval=FALSE, warning=FALSE, include=FALSE}
+cld <-CLD(lsmeans, alpha=0.05, Letters=letters, adjust="none", reversed = TRUE)
+
+cld 
+```
+
+###### Aviso
+```
+"A função e os métodos do CLD estão obsoletos. Os agrupamentos de letras (CLD) incentivam uma interpretação enganosa do teste de significância por meio de agrupamento visual cujas comparações têm P> alfa como se fossem iguais. No entanto, não provar que duas médias são diferentes não significa que as médias são iguais. Além disso, os CLDs fazem uma distinção difícil entre os valores de P quase iguais a alfa, mas em lados opostos."
+```
+
+
+## Figura
+
+
+##### Gráfico de pontos com intervalo de confiança
+
+Como a função *CLD* está obsoleta, eu recomendo usar *lsmeans* para criar uma figura.
+
+```{r}
+nd <- as.data.frame(lsmeans$emmeans)
+```
+
+Use *nd* para plotar uma figura.
+
+
+> ggplot function
+
+```{r}
+ggplot(nd, aes(x=reorder(herbicide,response), y=response*100, color=herbicide)) + 
+  geom_point(size=4) + ylim(0,100) + coord_flip() +
+  scale_color_manual(values=c("red", "blue", "green", "orange", "purple")) +
+  theme_bw() +  labs(y="Controle de caruru (%)", x="Herbicidas") +
+  geom_linerange(aes(ymin  =  lower.CL*100, ymax  =  upper.CL*100), size=1.5) + 
+  theme(axis.title = element_text(size=16),
+        axis.text = element_text(size=15),
+        legend.position = "none") 
+```
+
+As médias de controle de caruru (%) e o intervalo de confiança de cada herbicida são exibidos em uma figura do gráfico *ggplot*.
+
+
+##### Gráfico de barras com agrupamento de letras
+
+Se você gosta de apresentar os resultados em gráfico de barras com letras. Execute os codigos abaixo.
+
+
+```{r eval=FALSE, warning=FALSE, include=FALSE}
+ggplot(cld, aes(x=herbicide, y=response*100, fill=herbicide, label=.group)) + 
+  geom_bar(stat="identity") + ylim(0,105) +
+  scale_fill_manual(values=c("red", "blue", "green", "orange", "purple")) +
+  theme_bw() +  labs(y="Waterhemp control (%)", x="Herbicides") +
+  geom_text(nudge_y = 7, size=8) + 
+  theme(axis.title = element_text(size=16),
+        axis.text = element_text(size=15),
+        legend.position = "none") 
+```
+
+## Tabela
+
+- Execute o pacote abaixo
+
+```
+library(kableExtra)
+```
+
+Este é uma tabela muito simples.
+
+> Função *kable*
+
+```{r eval=FALSE, include=FALSE}
+kable(cld)
+```
+
+
+
+
+----
+Essa postagem é a tradução do post em inglês [One-Way ANOVA for Percentage Weed Control Data](https://www.openweedsci.org/post/2019/12/20/one-way-anova-for-percentage-weed-control-data/) escrito por Maxwel C Oliveira e Rodrigo Werle no projeto [Open Weed Science](https://www.openweedsci.org)
+----
