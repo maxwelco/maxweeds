@@ -14,7 +14,7 @@ title = "Herbicide site of action key for crop injury symptoms"
 
 url_code = ""
 url_dataset = ""
-url_pdf = "pdf/2018-injury-en.pdf"
+url_pdf = "pdf/2018-herb-en.pdf"
 url_project = ""
 url_slides = ""
 url_video = ""

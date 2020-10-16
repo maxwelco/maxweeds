@@ -27,7 +27,7 @@ Com o inicio da safra de milho e soja nas principais regiões produtoras no Bras
 Criamos uma chave para ajudar na determinação de herbicidas que podem ser responsáveis por injúrias na cultura do milho e/ou soja. Essa chave usa o mecanismo-de-ação (MdA) e a respectiva classificação numérica da Weed Science Society of America (WSSA), pois herbicidas do mesmo MdA causam injúrias semelhantes. Depois de chegar a um MdA específico, você pode verificar se algum herbicida desse grupo é o responsável pela injúria na cultura. Além disso, o controle do grupo de plantas daninhas é especificado. Por isso, lembre-se de observar as plantas daninhas na área para validar a identificação.
 
 
-**Para baixar clique aqui** ["Chave para Identificação de Injúrias Causadas por Herbicidas"](/files/2018_HerbicideInjury_BRA.pdf)
+**Para baixar clique aqui** ["Chave para Identificação de Injúrias Causadas por Herbicidas"](2018-herb-pt.pdf)
 
 
 ![Figure](/post/chave/herbchart.png) 

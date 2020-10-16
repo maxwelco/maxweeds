@@ -14,7 +14,7 @@ title = "Chave para identificação de injúrias causadas por herbicidas"
 
 url_code = ""
 url_dataset = ""
-url_pdf = "pdf/2018-injury-br.pdf" 
+url_pdf = "/pdf/2018-herb-pt.pdf" 
 url_project = ""
 url_slides = ""
 url_video = ""
