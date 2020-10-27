@@ -12,8 +12,8 @@ summary: "Manejo de plantas daninhas em gramíneas forrageiras"
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: "2020-10-27T19:50:00Z"
-date_end: "2020-10-27T22:00:00Z"
+date: "2020-10-26T19:50:00Z"
+date_end: "2020-10-26T22:00:00Z"
 all_day: false
 
 categories:
