@@ -1,5 +1,5 @@
 ---
-title: Manejo de Plantas Daninhas em Sistemas de Gramíneas Forrageiras
+title: Weed Management in Forage Grass Species
 draft: false
 authors: 
   - maxwel
@@ -17,11 +17,11 @@ date_end: "2020-10-27T22:00:00Z"
 all_day: false
 
 categories:
-  - palestra
+  - talk
   - workshop
 tags:
-  - planta daninha
-  - herbicida
+  - weeds
+  - herbicide
 featured: yes
 image:
   caption: 'Image: Maxwel C Oliveira'
@@ -31,18 +31,18 @@ projects: []
 links:
 - icon: images
   icon_pack: fas
-  name: apresentação
+  name: slides
   url: "https://palestra-pastagens.netlify.app/#1"
 - icon: github
   icon_pack: fab
-  name: materiais
+  name: materials
   url: https://github.com/Unoeste-PP/palestra-pastagens
 ---
 
 
-> Este workshop foi organizado pela Associação dos engenheiros Agrônomos de Presidente Bernardes com apoio do CREA-SP e IPEEA. 
+> This workshop was organized by the Agronomist Association of de Presidente Bernardes with support of CREA-SP and IPEEA. Event using the Portuguese language.
 
-Nesta palestra, falei sobre os centeitos básicos de plantas daninhas e os processos que levam a invasão de plantas daninhas/invasoras em sistemas de cultivo, especialmente em gramíneas forrageiras. Assim como técnicas de manejo integrado de plantas daninhas/invasoras em gramíneas forrageiras.
+In this lecture, I talked about the basic concepts of weeds oand the processes to weed invasion, especially in forage grass crops. As well as integrated weed/invasive management tools for forage grasses.
 
 <img src="flyer.jpeg" class="center-block" alt="CZI huddle" style="width:80%;">
 
