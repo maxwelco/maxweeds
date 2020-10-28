@@ -3,12 +3,12 @@ title: Weed Management in Forage Grass Crops
 draft: false
 authors: 
   - maxwel
-event: 'Circuito Técnico 26 e 27 - Benefícios do Manejo de Campos de Sementes Forrageiras e Grandes Sistema ILP
-'
+event: 'Circuito Técnico 26 e 27 - Benefícios do Manejo de Campos de Sementes Forrageiras e Grandes Sistema ILP'
+
 event_url: http://portal.ufvjm.edu.br/agendas/eventos/2020/documentos/programacao-workshop-producao-vegetal.pdf
-location: Online webinário
+location: Online webinar
 abstract: "" 
-summary: "Manejo de plantas daninhas em gramíneas forrageiras" 
+summary: "Integrated Weed Management in Forage Crop Species" 
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
