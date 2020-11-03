@@ -249,12 +249,12 @@ The black dot represents the mean waterhemp control whereas the purple represent
 
 > *CLD* function
 
-```r
-cld <-CLD(lsmeans, alpha=0.05, Letters=letters, adjust="none", reversed = TRUE)
+```{r message=FALSE}
+cld <-CLD(lsmeans$emmeans, alpha=0.05, Letters=letters, adjust="none", reversed = TRUE)
 cld 
 ```
 
-The codes above is not working in the latest R version. The reason is explained below:
+
 
 ## Warning
 
@@ -302,7 +302,7 @@ The mean and confidence intervals of each herbicide are displayed in the*ggplot*
 
 If you like presenting barplots with letters. Here is how you should proceed:
 
-```r
+```{r}
 ggplot(cld, aes(x=herbicide, y=response*100, fill=herbicide, label=.group)) + 
   geom_bar(stat="identity") + ylim(0,105) +
   scale_fill_manual(values=c("red", "blue", "green", "orange", "purple")) +
@@ -329,7 +329,9 @@ This is a very simple table generator.
 > *kable* function 
 
 ```{r}
-kable(nd)
+cld %>%
+  kbl() %>%
+  kable_classic_2(full_width = F)
 ```
 
 
