@@ -313,7 +313,7 @@ ggplot(cld, aes(x=herbicide, y=response*100, fill=herbicide, label=.group)) +
         legend.position = "none") 
 ```
 
-The codes above would only run if the *CLD* works in your R version.
+
 
 
 ## Table
@@ -328,7 +328,7 @@ This is a very simple table generator.
 
 > *kable* function 
 
-```{r}
+```{r fig.align='center'}
 cld %>%
   kbl() %>%
   kable_classic_2(full_width = F)

@@ -235,13 +235,12 @@ O ponto preto é a média do controle do herbicida e o roxo é o intervalo de co
 
 > Função *CLD* 
 
-```r
-cld <-CLD(lsmeans, alpha=0.05, Letters=letters, adjust="none", reversed = TRUE)
-
+```{r message=FALSE}
+cld <-CLD(lsmeans$emmeans, alpha=0.05, Letters=letters, adjust="none", reversed = TRUE)
 cld 
 ```
 
-Os códigos acima não estão funcionando na versão R mais recente. O motivo é explicado abaixo:
+
 
 ###### Aviso
 ```
@@ -284,7 +283,7 @@ As médias de controle de caruru (%) e o intervalo de confiança de cada herbici
 Se você gosta de apresentar os resultados em gráfico de barras com letras. Execute os codigos abaixo.
 
 
-```r
+```{r}
 ggplot(cld, aes(x=herbicide, y=response*100, fill=herbicide, label=.group)) + 
   geom_bar(stat="identity") + ylim(0,105) +
   scale_fill_manual(values=c("red", "blue", "green", "orange", "purple")) +
@@ -295,7 +294,7 @@ ggplot(cld, aes(x=herbicide, y=response*100, fill=herbicide, label=.group)) +
         legend.position = "none") 
 ```
 
-Os códigos acima só serão executados se o *CLD* funcionar na sua versão R.
+
 
 ## Tabela
 
@@ -309,8 +308,10 @@ Este é uma tabela muito simples.
 
 > Função *kable*
 
-```{r eval=FALSE, include=FALSE}
-kable(nd)
+```{r fig.align='center'}
+cld %>%
+  kbl() %>%
+  kable_classic_2(full_width = F)
 ```
 
 
