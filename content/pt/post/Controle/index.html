@@ -18,6 +18,8 @@ title: 'Análise de Controle de Plantas Daninhas'
 ---
 
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <p>O controle de plantas daninhas com herbicidas é um experimento comum realizado na pesquisa de plantas daninhas. Geralmente, os experimentos são organizados em delineamento em blocos casualizados com vários tratamentos (herbicidas). Dias após o tratamento (DAT), uma nota de controle em percentagem (%) é dada às plantas daninhas. A percentagem no controle de plantas daninhas varia de 0% (plantas sem injúrias) e 100% (plantas completamente controladas). Portanto, antes de iniciar os experimentos, o pesquisador sabe que os valores de controle variam entre 0 a 100%.</p>
@@ -223,10 +225,21 @@ lsmeans</code></pre>
 <blockquote>
 <p>Função <em>CLD</em></p>
 </blockquote>
-<pre class="r"><code>cld &lt;-CLD(lsmeans, alpha=0.05, Letters=letters, adjust=&quot;none&quot;, reversed = TRUE)
-
-cld </code></pre>
-<p>Os códigos acima não estão funcionando na versão R mais recente. O motivo é explicado abaixo:</p>
+<pre class="r"><code>cld &lt;-CLD(lsmeans$emmeans, alpha=0.05, Letters=letters, adjust=&quot;none&quot;, reversed = TRUE)</code></pre>
+<pre><code>## Warning: &#39;CLD&#39; will be deprecated. Its use is discouraged.
+## See &#39;?cld.emmGrid&#39; for an explanation. Use &#39;pwpp&#39; or &#39;multcomp::cld&#39; instead.</code></pre>
+<pre class="r"><code>cld </code></pre>
+<pre><code>##  herbicide response      SE df lower.CL upper.CL .group
+##  A            0.975 0.00793 22    0.952    0.987  a    
+##  B            0.964 0.01011 22    0.936    0.980  a    
+##  C            0.915 0.01618 22    0.874    0.943   b   
+##  E            0.871 0.01975 22    0.824    0.907   b   
+##  D            0.542 0.02999 22    0.479    0.603    c  
+## 
+## Confidence level used: 0.95 
+## Intervals are back-transformed from the logit scale 
+## Tests are performed on the log odds ratio scale 
+## significance level used: alpha = 0.05</code></pre>
 <div id="aviso" class="section level6">
 <h6>Aviso</h6>
 <pre><code>&quot;A função e os métodos do CLD estão obsoletos. Os agrupamentos de letras (CLD) incentivam uma interpretação enganosa do teste de significância por meio de agrupamento visual cujas comparações têm P&gt; alfa como se fossem iguais. No entanto, não provar que duas médias são diferentes não significa que as médias são iguais. Além disso, os CLDs fazem uma distinção difícil entre os valores de P quase iguais a alfa, mas em lados opostos.&quot;</code></pre>
@@ -250,7 +263,7 @@ cld </code></pre>
   theme(axis.title = element_text(size=16),
         axis.text = element_text(size=15),
         legend.position = &quot;none&quot;) </code></pre>
-<p><img src="/pt/post/Controle/index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="/pt/post/Controle/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>As médias de controle de caruru (%) e o intervalo de confiança de cada herbicida são exibidos em uma figura do gráfico <em>ggplot</em>.</p>
 </div>
 <div id="gráfico-de-barras-com-agrupamento-de-letras" class="section level5">
@@ -264,7 +277,7 @@ cld </code></pre>
   theme(axis.title = element_text(size=16),
         axis.text = element_text(size=15),
         legend.position = &quot;none&quot;) </code></pre>
-<p>Os códigos acima só serão executados se o <em>CLD</em> funcionar na sua versão R.</p>
+<p><img src="/pt/post/Controle/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 </div>
 <div id="tabela" class="section level2">
@@ -277,6 +290,170 @@ cld </code></pre>
 <blockquote>
 <p>Função <em>kable</em></p>
 </blockquote>
+<pre class="r"><code>cld %&gt;%
+  kbl() %&gt;%
+  kable_classic_2(full_width = F)</code></pre>
+<table class=" lightable-classic-2" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+herbicide
+</th>
+<th style="text-align:right;">
+response
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+lower.CL
+</th>
+<th style="text-align:right;">
+upper.CL
+</th>
+<th style="text-align:left;">
+.group
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+0.9752142
+</td>
+<td style="text-align:right;">
+0.0079316
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0.9522053
+</td>
+<td style="text-align:right;">
+0.9872942
+</td>
+<td style="text-align:left;">
+a
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+0.9635645
+</td>
+<td style="text-align:right;">
+0.0101101
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0.9357085
+</td>
+<td style="text-align:right;">
+0.9796141
+</td>
+<td style="text-align:left;">
+a
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+0.9145302
+</td>
+<td style="text-align:right;">
+0.0161835
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0.8744471
+</td>
+<td style="text-align:right;">
+0.9426558
+</td>
+<td style="text-align:left;">
+b
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+0.8709271
+</td>
+<td style="text-align:right;">
+0.0197498
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0.8241647
+</td>
+<td style="text-align:right;">
+0.9066617
+</td>
+<td style="text-align:left;">
+b
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+0.5416446
+</td>
+<td style="text-align:right;">
+0.0299928
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0.4791177
+</td>
+<td style="text-align:right;">
+0.6028868
+</td>
+<td style="text-align:left;">
+c
+</td>
+</tr>
+</tbody>
+</table>
 <table>
 <tbody>
 <tr class="odd">

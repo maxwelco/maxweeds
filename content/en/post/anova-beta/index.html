@@ -18,6 +18,8 @@ tags:
 ---
 
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <p>This post is also published on the <a href="https://www.openweedsci.org/post/2019/12/20/one-way-anova-for-percentage-weed-control-data/">Open Weed Science</a> website.</p>
@@ -236,9 +238,21 @@ lsmeans</code></pre>
 <blockquote>
 <p><em>CLD</em> function</p>
 </blockquote>
-<pre class="r"><code>cld &lt;-CLD(lsmeans, alpha=0.05, Letters=letters, adjust=&quot;none&quot;, reversed = TRUE)
-cld </code></pre>
-<p>The codes above is not working in the latest R version. The reason is explained below:</p>
+<pre class="r"><code>cld &lt;-CLD(lsmeans$emmeans, alpha=0.05, Letters=letters, adjust=&quot;none&quot;, reversed = TRUE)</code></pre>
+<pre><code>## Warning: &#39;CLD&#39; will be deprecated. Its use is discouraged.
+## See &#39;?cld.emmGrid&#39; for an explanation. Use &#39;pwpp&#39; or &#39;multcomp::cld&#39; instead.</code></pre>
+<pre class="r"><code>cld </code></pre>
+<pre><code>##  herbicide response     SE df lower.CL upper.CL .group
+##  A            0.979 0.0112  8    0.930    0.994  a    
+##  B            0.940 0.0220  8    0.864    0.974  ab   
+##  C            0.897 0.0282  8    0.812    0.947   b   
+##  E            0.845 0.0335  8    0.752    0.908   b   
+##  D            0.533 0.0471  8    0.424    0.638    c  
+## 
+## Confidence level used: 0.95 
+## Intervals are back-transformed from the logit scale 
+## Tests are performed on the log odds ratio scale 
+## significance level used: alpha = 0.05</code></pre>
 <div id="warning" class="section level2">
 <h2>Warning</h2>
 <pre class="toml"><code>&quot;The CLD function and methods are deprecated. Compact-letter displays (CLDs) encourage a misleading interpretation of significance testing by visually grouping means whose comparisons have P &gt; alpha as though they are equal. However, failing to prove two means are different does not prove that they are the same. In addition, CLDs make a hard distinction between P values nearly equal to alpha but on opposite sides.&quot;</code></pre>
@@ -263,7 +277,7 @@ theme(axis.title = element_text(size=16),
 axis.text = element_text(size=15),
 legend.position = &quot;none&quot;) +
 coord_flip()</code></pre>
-<p><img src="/en/post/anova-beta/index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="/en/post/anova-beta/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>The mean and confidence intervals of each herbicide are displayed in the<em>ggplot</em> figure.</p>
 <blockquote>
 <p>Figure updated to follow a suggestion by <a href="https://twitter.com/WyoWeeds">Dr. Andrew Kniss</a> (see comments).</p>
@@ -280,7 +294,7 @@ coord_flip()</code></pre>
   theme(axis.title = element_text(size=16),
         axis.text = element_text(size=15),
         legend.position = &quot;none&quot;) </code></pre>
-<p>The codes above would only run if the <em>CLD</em> works in your R version.</p>
+<p><img src="/en/post/anova-beta/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="table" class="section level2">
 <h2>Table</h2>
@@ -292,10 +306,14 @@ coord_flip()</code></pre>
 <blockquote>
 <p><em>kable</em> function</p>
 </blockquote>
-<pre class="r"><code>kable(nd)</code></pre>
-<table>
+<pre class="r"><code>cld %&gt;%
+  kbl() %&gt;%
+  kable_classic_2(full_width = F)</code></pre>
+<table class=" lightable-classic-2" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
+<th style="text-align:left;">
+</th>
 <th style="text-align:left;">
 herbicide
 </th>
@@ -314,10 +332,16 @@ lower.CL
 <th style="text-align:right;">
 upper.CL
 </th>
+<th style="text-align:left;">
+.group
+</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align:left;">
+4
+</td>
 <td style="text-align:left;">
 A
 </td>
@@ -336,8 +360,14 @@ A
 <td style="text-align:right;">
 0.9938173
 </td>
+<td style="text-align:left;">
+a
+</td>
 </tr>
 <tr>
+<td style="text-align:left;">
+5
+</td>
 <td style="text-align:left;">
 B
 </td>
@@ -356,8 +386,14 @@ B
 <td style="text-align:right;">
 0.9743843
 </td>
+<td style="text-align:left;">
+ab
+</td>
 </tr>
 <tr>
+<td style="text-align:left;">
+3
+</td>
 <td style="text-align:left;">
 C
 </td>
@@ -376,8 +412,40 @@ C
 <td style="text-align:right;">
 0.9465425
 </td>
+<td style="text-align:left;">
+b
+</td>
 </tr>
 <tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+0.8452187
+</td>
+<td style="text-align:right;">
+0.0335207
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0.7515174
+</td>
+<td style="text-align:right;">
+0.9079153
+</td>
+<td style="text-align:left;">
+b
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
 <td style="text-align:left;">
 D
 </td>
@@ -396,25 +464,8 @@ D
 <td style="text-align:right;">
 0.6383555
 </td>
-</tr>
-<tr>
 <td style="text-align:left;">
-E
-</td>
-<td style="text-align:right;">
-0.8452187
-</td>
-<td style="text-align:right;">
-0.0335207
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-0.7515174
-</td>
-<td style="text-align:right;">
-0.9079153
+c
 </td>
 </tr>
 </tbody>
