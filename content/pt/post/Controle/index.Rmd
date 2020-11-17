@@ -7,7 +7,7 @@ image:
   caption: 'Imagem: [**Ruthson Zimmerman**](https://unsplash.com/photos/FVwG5OzPuzo)'
   focal_point: ""
   preview_only: false
-lastmod: "2020-05-19T00:00:00Z"
+lastmod: "2020-11-03T00:00:00Z"
 projects: []
 subtitle: ''
 summary: Passo a posso com o uso da ANOVA para analisar o controle plantas daninhas
@@ -284,7 +284,7 @@ Se você gosta de apresentar os resultados em gráfico de barras com letras. Exe
 
 
 ```{r}
-ggplot(cld, aes(x=herbicide, y=response*100, fill=herbicide, label=.group)) + 
+ggplot(cld, aes(x=reorder(herbicide,response), y=response*100, fill=herbicide, label=.group)) + 
   geom_bar(stat="identity") + ylim(0,105) +
   scale_fill_manual(values=c("red", "blue", "green", "orange", "purple")) +
   theme_bw() +  labs(y="Waterhemp control (%)", x="Herbicides") +

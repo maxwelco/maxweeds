@@ -8,7 +8,7 @@ image:
   caption: 'Image credit: [**Charles Deluvio**](https://unsplash.com/photos/pjAH2Ax4uWk)'
   focal_point: ''
   preview_only: no
-lastmod: '2020-07-29T00:00:00Z'
+lastmod: '2020-11-02T00:00:00Z'
 projects: [Open Weed Science]
 subtitle: 
 summary: 'Using R for data analysis in weed research'
@@ -286,7 +286,7 @@ coord_flip()</code></pre>
 <div id="bar-plot-with-letters" class="section level2">
 <h2>Bar plot with letters</h2>
 <p>If you like presenting barplots with letters. Here is how you should proceed:</p>
-<pre class="r"><code>ggplot(cld, aes(x=herbicide, y=response*100, fill=herbicide, label=.group)) + 
+<pre class="r"><code>ggplot(cld, aes(x=reorder(herbicide,response), y=response*100, fill=herbicide, label=.group)) + 
   geom_bar(stat=&quot;identity&quot;) + ylim(0,105) +
   scale_fill_manual(values=c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;orange&quot;, &quot;purple&quot;)) +
   theme_bw() +  labs(y=&quot;Waterhemp control (%)&quot;, x=&quot;Herbicides&quot;) +

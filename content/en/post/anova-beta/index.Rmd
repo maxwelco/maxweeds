@@ -8,7 +8,7 @@ image:
   caption: 'Image credit: [**Charles Deluvio**](https://unsplash.com/photos/pjAH2Ax4uWk)'
   focal_point: ''
   preview_only: no
-lastmod: '2020-07-29T00:00:00Z'
+lastmod: '2020-11-02T00:00:00Z'
 projects: [Open Weed Science]
 subtitle: 
 summary: 'Using R for data analysis in weed research'
@@ -303,7 +303,7 @@ The mean and confidence intervals of each herbicide are displayed in the*ggplot*
 If you like presenting barplots with letters. Here is how you should proceed:
 
 ```{r}
-ggplot(cld, aes(x=herbicide, y=response*100, fill=herbicide, label=.group)) + 
+ggplot(cld, aes(x=reorder(herbicide,response), y=response*100, fill=herbicide, label=.group)) + 
   geom_bar(stat="identity") + ylim(0,105) +
   scale_fill_manual(values=c("red", "blue", "green", "orange", "purple")) +
   theme_bw() +  labs(y="Waterhemp control (%)", x="Herbicides") +
