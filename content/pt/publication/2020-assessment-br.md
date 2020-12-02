@@ -5,7 +5,7 @@ authors = ["Maxwel Coura Oliveira", "Anelise Lencina", "André Ulguim", "Rodrigo
 date = "2020-08-09"
 image_preview = ""
 math = true
-publication_types = ["3"]
+publication_types = ["2"]
 publication = "*Weed Technology* Journal"
 publication_short = ""
 selected = false
@@ -14,7 +14,7 @@ title = "Assessment of crop and weed management strategies prior to introduction
 
 url_code = ""
 url_dataset = ""
-url_pdf = "pdf/2020-assessment-br.pdf"
+url_pdf = "pdf/2020-assessment-br.pdf" 
 url_project = ""
 url_slides = ""
 url_video = ""
