@@ -303,14 +303,16 @@ The mean and confidence intervals of each herbicide are displayed in the*ggplot*
 If you like presenting barplots with letters. Here is how you should proceed:
 
 ```{r}
-ggplot(cld, aes(x=reorder(herbicide,response), y=response*100, fill=herbicide, label=.group)) + 
+ggplot(cld, aes(x=reorder(herbicide,response), 
+                y=response*100, fill=herbicide, label=.group)) + 
   geom_bar(stat="identity") + ylim(0,105) +
   scale_fill_manual(values=c("red", "blue", "green", "orange", "purple")) +
   theme_bw() +  labs(y="Waterhemp control (%)", x="Herbicides") +
   geom_text(nudge_y = 7, size=8) + 
   theme(axis.title = element_text(size=16),
         axis.text = element_text(size=15),
-        legend.position = "none") 
+        legend.position = "none") +
+  coord_flip()
 ```
 
 
