@@ -112,7 +112,7 @@ library(car)
 > Função Levene
 
 ```{r}
-leveneTest(dado$control,  dado$herbicide)
+leveneTest(control ~ herbicide, data = dado)
 ```
 
 
@@ -284,14 +284,16 @@ Se você gosta de apresentar os resultados em gráfico de barras com letras. Exe
 
 
 ```{r}
-ggplot(cld, aes(x=reorder(herbicide,response), y=response*100, fill=herbicide, label=.group)) + 
+ggplot(cld, aes(x=reorder(herbicide,response), 
+                y=response*100, fill=herbicide, label=.group)) + 
   geom_bar(stat="identity") + ylim(0,105) +
   scale_fill_manual(values=c("red", "blue", "green", "orange", "purple")) +
   theme_bw() +  labs(y="Waterhemp control (%)", x="Herbicides") +
   geom_text(nudge_y = 7, size=8) + 
   theme(axis.title = element_text(size=16),
         axis.text = element_text(size=15),
-        legend.position = "none") 
+        legend.position = "none") +
+  coord_flip()
 ```
 
 

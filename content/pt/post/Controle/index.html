@@ -17,7 +17,8 @@ tags:
 title: 'Análise de Controle de Plantas Daninhas'
 ---
 
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
 <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 <link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
 
@@ -93,9 +94,9 @@ dado &lt;- read_csv(df_path)</code></pre>
 <blockquote>
 <p>Função Levene</p>
 </blockquote>
-<pre class="r"><code>leveneTest(dado$control,  dado$herbicide)</code></pre>
-<pre><code>## Warning in leveneTest.default(dado$control, dado$herbicide): dado$herbicide
-## coerced to factor.</code></pre>
+<pre class="r"><code>leveneTest(control ~ herbicide, data = dado)</code></pre>
+<pre><code>## Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+## factor.</code></pre>
 <pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
 ##       Df F value Pr(&gt;F)
 ## group  4  0.5109 0.7282
@@ -269,14 +270,16 @@ lsmeans</code></pre>
 <div id="gráfico-de-barras-com-agrupamento-de-letras" class="section level5">
 <h5>Gráfico de barras com agrupamento de letras</h5>
 <p>Se você gosta de apresentar os resultados em gráfico de barras com letras. Execute os codigos abaixo.</p>
-<pre class="r"><code>ggplot(cld, aes(x=reorder(herbicide,response), y=response*100, fill=herbicide, label=.group)) + 
+<pre class="r"><code>ggplot(cld, aes(x=reorder(herbicide,response), 
+                y=response*100, fill=herbicide, label=.group)) + 
   geom_bar(stat=&quot;identity&quot;) + ylim(0,105) +
   scale_fill_manual(values=c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;orange&quot;, &quot;purple&quot;)) +
   theme_bw() +  labs(y=&quot;Waterhemp control (%)&quot;, x=&quot;Herbicides&quot;) +
   geom_text(nudge_y = 7, size=8) + 
   theme(axis.title = element_text(size=16),
         axis.text = element_text(size=15),
-        legend.position = &quot;none&quot;) </code></pre>
+        legend.position = &quot;none&quot;) +
+  coord_flip()</code></pre>
 <p><img src="/pt/post/Controle/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 </div>
@@ -293,7 +296,7 @@ lsmeans</code></pre>
 <pre class="r"><code>cld %&gt;%
   kbl() %&gt;%
   kable_classic_2(full_width = F)</code></pre>
-<table class=" lightable-classic-2" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class=" lightable-classic-2" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
 <thead>
 <tr>
 <th style="text-align:left;">
