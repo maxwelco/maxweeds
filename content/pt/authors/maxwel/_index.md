@@ -22,9 +22,9 @@ interests:
 
 name: Maxwel Coura Oliveira
 organizations:
-- name: Universidade do Oeste Paulista
-  url: https://www.unoeste.br/
-role: Professor
+- name: University of Wisconsin-Madison
+  url: https://www.wisc.edu/
+role: Pesquisador Associado
 
 
 # Social/Academic Networking

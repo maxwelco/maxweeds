@@ -20,9 +20,9 @@ interests:
 - Data Science
 name: Maxwel Coura Oliveira
 organizations:
-- name: Western São Paulo University
-  url: https://www.unoeste.br/
-role: Professor
+- name: University of Wisconsin-Madison
+  url: https://www.wisc.edu/
+role: Associate Reasercher
 social:
 - icon: twitter
   icon_pack: fab
