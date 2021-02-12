@@ -11,7 +11,7 @@ links:
 - icon: github
   icon_pack: fab
   name: code
-  url: https://github.com/maxwelco/OpenWeedSci/blob/master/content/post/2020-02-25-wssa.Rmd
+  url: https://github.com/maxwelco/maxwelco-blog/tree/master/content/en/post/ncwss-text-mining
 summary: ''
 authors: []
 lastmod: '2021-02-10T16:51:54-03:00'
