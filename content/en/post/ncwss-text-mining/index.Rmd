@@ -12,7 +12,7 @@ links:
   icon_pack: fab
   name: code
   url: https://github.com/maxwelco/maxwelco-blog/tree/master/content/en/post/ncwss-text-mining
-summary: ''
+summary: 'Text analysis from 20 years of North Central Weed Science Society Meeting Proceedings'
 authors: []
 lastmod: '2021-02-10T16:51:54-03:00'
 featured: yes
@@ -269,6 +269,8 @@ Check the figure carefully. What were you doing in 2001? What do you think have 
 ![](top_weeds.png)
 
 This figure was adapted from one of [JaredBraggins](https://twitter.com/JaredBraggins) Tidy Tuesday visualizations. 
+
+This post will be available soon at the [Open Weed Science](https://www.openweedsci.org/).
 
 ---
 
