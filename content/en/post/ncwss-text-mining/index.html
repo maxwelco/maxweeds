@@ -26,7 +26,7 @@ projects: [Open Weed Science]
 <script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
-<p>This text analysis is part of my abstract (co-authored with Rodrigo Werle and Sarah Marinho) presented at the North Central Weed Science Society (<strong>NCWSS</strong>) meeting that was held remotely in December 2020. Here I am presenting part of that abstract, the <strong>weed species</strong> ranked among top 100 words from 2001 through 2020. I am adding to this analysis the 2020 meeting proceedings. Also, I am running the text analysis with much less coding that I have done for the <strong>NCWSS</strong> meeting. That is what I am going to show in this analysis. If you just want to see the figure, please scroll to the bottom of this page.</p>
+<p>This text analysis is part of my abstract (co-authored with <a href="https://twitter.com/WiscWeeds">Rodrigo Werle</a> and Sarah <a href="https://twitter.com/SarahMarinho20">Marinho</a>) presented at the North Central Weed Science Society (<strong>NCWSS</strong>) meeting that was held remotely in December 2020. Here I am presenting part of that abstract, the <strong>weed species</strong> ranked among top 100 words from 2001 through 2020. I am adding to this analysis the 2020 meeting proceedings. Also, I am running the text analysis with much less coding that I have done for the <strong>NCWSS</strong> meeting. That is what I am going to show in this analysis. If you just want to see the figure, please scroll to the bottom of this page.</p>
 <p>First we have to load the packages needed for this analysis. Please run the codes below:</p>
 <pre class="r"><code>library(tidyverse)
 library(tidytext)
@@ -36,7 +36,8 @@ library(ggtext)
 # if you do not have any of these packages installed, please run install.packages(&quot;name_of_the_package&quot;)</code></pre>
 <p>I have downloaded all <strong>NCWSS</strong> proceedings and added into a folder named docs (name of your choice). You can find all PDFs in “code” below the post title (folder docs).</p>
 <p>I used the <em>str_c</em> function to get all PDFs, which is into the folder “docs”. The pdfs output contains the path for all 20 <strong>NCWSS</strong> proceedings.</p>
-<pre class="r"><code>pdfs &lt;- str_c(&quot;docs&quot;, &quot;/&quot;, list.files(&quot;docs&quot;, pattern = &quot;*.pdf&quot;), sep = &quot;&quot;)
+<pre class="r"><code>pdfs &lt;- str_c(&quot;docs&quot;, &quot;/&quot;, list.files(&quot;docs&quot;, pattern = &quot;*.pdf&quot;), 
+              sep = &quot;&quot;)
 pdfs </code></pre>
 <pre><code>##  [1] &quot;docs/nc2001.pdf&quot; &quot;docs/nc2002.pdf&quot; &quot;docs/nc2003.pdf&quot; &quot;docs/nc2004.pdf&quot;
 ##  [5] &quot;docs/nc2005.pdf&quot; &quot;docs/nc2006.pdf&quot; &quot;docs/nc2007.pdf&quot; &quot;docs/nc2008.pdf&quot;
@@ -86,8 +87,10 @@ pdf</code></pre>
 <pre class="r"><code>pdf1 &lt;- pdf %&gt;% 
   unnest(text) %&gt;% # pdfs_text is a list
   mutate(text = str_to_lower(text), # making all text lower case
-         text = str_replace(text, &quot;2,4-d&quot;, &quot;twofourd&quot;), # need to replace it
-         text = str_replace(text, &quot;marestail&quot;, &quot;horseweed&quot;)) %&gt;% 
+         text = str_replace(text, &quot;2,4-d&quot;, 
+                            &quot;twofourd&quot;), # need to replace it
+         text = str_replace(text, &quot;marestail&quot;, 
+                            &quot;horseweed&quot;)) %&gt;% # marestail = horseweed
   unnest_tokens(word, text, strip_numeric = TRUE)
 
 pdf1 %&gt;% 
@@ -137,7 +140,7 @@ stopwords %&gt;%
 <pre class="r"><code>pdf3 &lt;- pdf2 %&gt;% 
   anti_join(stop_tibble, by = c(&quot;word&quot;)) %&gt;% # stop_tibble is in the source code
   mutate(word = str_replace(word, &quot;twofourd&quot;, &quot;2,4-d&quot;)) # bring back 2,4-d</code></pre>
-<p>Next I will use functions to <em>count</em> words over the years, <em>arrange</em> it as descending, <em>group_by</em> year, rank them and <em>filter</em> the top 100 words by each year.</p>
+<p>Next I will use functions to <em>count</em> words over the years, <em>arrange</em> it as descending, <em>group_by</em> year, rank top 100 words (<em>row_number</em>) and <em>filter</em> the top 100 words by each year.</p>
 <pre class="r"><code>pdf4 &lt;- pdf3 %&gt;% 
   count(year, word) %&gt;% 
   arrange(year, -n) %&gt;% 
@@ -164,8 +167,12 @@ stopwords %&gt;%
 ## # … with 190 more rows</code></pre>
 <p>In this analysis I am interested only on weeds present in the top 100 words in 2001 and 2020. Therefore, I am using <em>if_else</em> function to create new columns for highlighting selected weed species. You can change and select any word if want as I did it with herbicides in my poster at the 2020 <strong>NCWSS</strong> meeting.</p>
 <pre class="r"><code>pdf5 &lt;- pdf4 %&gt;% 
-  mutate(highlight = if_else(word %in% c(&quot;amaranth&quot;, &quot;palmer&quot;, &quot;kochia&quot;, &quot;horseweed&quot;, &quot;grass&quot;, &quot;nightshade&quot;, &quot;waterhemp&quot;, &quot;velvetleaf&quot;, &quot;ragweed&quot;, &quot;sunflower&quot;,
-                                            &quot;foxtail&quot;), TRUE, FALSE),
+  mutate(highlight = if_else(word %in% c(&quot;amaranth&quot;, &quot;palmer&quot;, 
+                                         &quot;kochia&quot;, &quot;horseweed&quot;, 
+                                         &quot;grass&quot;, &quot;nightshade&quot;, 
+                                         &quot;waterhemp&quot;, &quot;velvetleaf&quot;, 
+                                         &quot;ragweed&quot;, &quot;sunflower&quot;,
+                                         &quot;foxtail&quot;), TRUE, FALSE),
        variable_col = if_else(highlight == TRUE, word, &quot;NA&quot;))
 
 pdf5 %&gt;% 
@@ -199,10 +206,11 @@ theme_style &lt;- theme(text = element_text(family = font_family),
                   rect = element_rect(fill = background),
                   plot.background = element_rect(fill = background, color = NA),
                   plot.title = element_markdown(family = title_family,
-                                            face = &#39;bold&#39;, size = 70, colour = text_colour),
-                  plot.subtitle = element_markdown(family = font_family, 
-                                                   size = 30, colour = text_colour),
-                  plot.caption = element_text(size = 20, colour = text_colour),
+                                            face = &#39;bold&#39;, size = 80, colour = text_colour),
+                  plot.subtitle = element_markdown(family = title_family, 
+                                                   size = 40, colour = text_colour),
+                  plot.caption = element_markdown(family = title_family,
+                                              size = 25, colour = text_colour, hjust = 0),
                   panel.background = element_rect(fill = background, color = NA),
                   panel.border = element_blank(),
                   panel.grid.major.y = element_blank(),
@@ -227,8 +235,10 @@ theme_style &lt;- theme(text = element_text(family = font_family),
 theme_set(theme_classic() + theme_style)
 
 #Set colour palette
-cols &lt;- c(&quot;#F2D9F3&quot;, &quot;#F2D9F3&quot;, &quot;#00E5E5&quot;, &quot;#DEB887&quot;, &quot;#FAC8C8&quot;, &quot;#39393A&quot;, &quot;#FA9664&quot;, 
-          &quot;#FF4040&quot;, &quot;#48DE7A&quot;, &quot;#942DC7&quot;, &quot;#F5F5DC&quot;, &quot;#FAFA00&quot;)</code></pre>
+cols &lt;- c(&quot;#F2D9F3&quot;, &quot;#F2D9F3&quot;, &quot;#00E5E5&quot;, &quot;#DEB887&quot;, 
+          &quot;#FAC8C8&quot;, &quot;#39393A&quot;, &quot;#FA9664&quot;, 
+          &quot;#FF4040&quot;, &quot;#48DE7A&quot;, &quot;#942DC7&quot;, 
+          &quot;#F5F5DC&quot;, &quot;#FAFA00&quot;)</code></pre>
 <p>Then I will plot the data. The idea here is to see the difference between weeds from top 100 words in 2001 and 2020.</p>
 <pre class="r"><code>figure &lt;- pdf5 %&gt;% 
   ggplot(aes(x = year, y = rank, group = word)) +
@@ -259,11 +269,10 @@ cols &lt;- c(&quot;#F2D9F3&quot;, &quot;#F2D9F3&quot;, &quot;#00E5E5&quot;, &quo
        proceedinds text analysis from 2001 through 2020&quot;,
        subtitle = &quot;Figure shows the rank of top 100 words of 2001 (left) 
        and 2020 (right) &lt;b style=&#39;color:red;&#39;&gt;NCWSS&lt;/b&gt; annual meeting proceedings. 
-       Common weed species names are highlighed to describe 
+       Common weed species names are highlighed to &lt;br&gt; describe 
        their change across 20 years.&quot;, 
        y= &quot;Rank&quot;,
-       caption = &quot;Visualization: @maxwelco adapted from 
-       @JaredBraggins | Source: NCWSS&quot;) 
+       caption = &quot;Visualization: @maxwelco adapted from @JaredBraggins | Source: NCWSS&quot;) 
 
 
 #Export plot 
@@ -273,4 +282,4 @@ ggsave(&quot;top_weeds.png&quot;, width = 40, height = 60, dpi=400, limitsize = 
 <p>This figure was adapted from one of <a href="https://twitter.com/JaredBraggins">JaredBraggins</a> Tidy Tuesday visualizations.</p>
 <p>This post will be available soon at the <a href="https://www.openweedsci.org/">Open Weed Science</a>.</p>
 <hr />
-<p>I good source to learn <a href="https://juliasilge.com/blog/learn-tidytext-learnr/">Tidy Text</a> by Julia Silge.</p>
+<p>Click <a href="(https://juliasilge.com/blog/learn-tidytext-learnr/)">here</a> to learn more about Tidy Text with Julia Silge.</p>

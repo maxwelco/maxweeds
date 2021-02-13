@@ -72,5 +72,5 @@ user_groups:
 - Visitors
 ---
 
-Sou PhD cientista pesquisador na University of Wisconsin-Madison e professor na Universidade do Oeste Paulista. Também sou consultor, [palestrante](/talks) e ensino Biologia e Manejo de Espécies de Plantas Daninhas e Ciência de Dados para alunos de graduação e pós-graduação. Sou apaixonado por ciência de plantas, ciência de dados e programação.
+Maxwel C. Oliveira é PhD pela University oF Nebraska-Lincoln e [instrutor certificado](https://education.rstudio.com/trainers/people/oliveira+maxwel/) pelo Rstudio. Atualmente trabalha como pesquisador associado na University of Wisconsin-Madison. Sou consultor, [palestrante](/talks) e ensino Biologia e Manejo de Espécies de Plantas Daninhas e Ciência de Dados para alunos de graduação e pós-graduação. Além disso, ajudo os produtores a melhorar a tomada de decisões sobre o manejo de plantas daninhas. Sou apaixonado por ciência de plantas, ciência de dados e programação.
 

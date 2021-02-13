@@ -55,7 +55,8 @@ I have downloaded all **NCWSS** proceedings and added into a folder named docs (
 I used the *str_c* function to get all PDFs, which is into the folder "docs". The pdfs output contains the path for all 20 **NCWSS** proceedings.
 
 ```{r name-pdfs}
-pdfs <- str_c("docs", "/", list.files("docs", pattern = "*.pdf"), sep = "")
+pdfs <- str_c("docs", "/", list.files("docs", pattern = "*.pdf"), 
+              sep = "")
 pdfs 
 ```
 
@@ -139,7 +140,7 @@ pdf3 <- pdf2 %>%
   mutate(word = str_replace(word, "twofourd", "2,4-d")) # bring back 2,4-d
 ```
 
-Next I will use functions to *count* words over the years, *arrange* it as descending, *group_by* year, rank them and *filter* the top 100 words by each year. 
+Next I will use functions to *count* words over the years, *arrange* it as descending, *group_by* year, rank top 100 words (*row_number*) and *filter* the top 100 words by each year. 
 
 ```{r}
 pdf4 <- pdf3 %>% 
@@ -191,10 +192,11 @@ theme_style <- theme(text = element_text(family = font_family),
                   rect = element_rect(fill = background),
                   plot.background = element_rect(fill = background, color = NA),
                   plot.title = element_markdown(family = title_family,
-                                            face = 'bold', size = 70, colour = text_colour),
-                  plot.subtitle = element_markdown(family = font_family, 
-                                                   size = 30, colour = text_colour),
-                  plot.caption = element_text(size = 20, colour = text_colour),
+                                            face = 'bold', size = 80, colour = text_colour),
+                  plot.subtitle = element_markdown(family = title_family, 
+                                                   size = 40, colour = text_colour),
+                  plot.caption = element_markdown(family = title_family,
+                                              size = 25, colour = text_colour, hjust = 0),
                   panel.background = element_rect(fill = background, color = NA),
                   panel.border = element_blank(),
                   panel.grid.major.y = element_blank(),
@@ -219,8 +221,10 @@ theme_style <- theme(text = element_text(family = font_family),
 theme_set(theme_classic() + theme_style)
 
 #Set colour palette
-cols <- c("#F2D9F3", "#F2D9F3", "#00E5E5", "#DEB887", "#FAC8C8", "#39393A", "#FA9664", 
-          "#FF4040", "#48DE7A", "#942DC7", "#F5F5DC", "#FAFA00")
+cols <- c("#F2D9F3", "#F2D9F3", "#00E5E5", "#DEB887", 
+          "#FAC8C8", "#39393A", "#FA9664", 
+          "#FF4040", "#48DE7A", "#942DC7", 
+          "#F5F5DC", "#FAFA00")
 ```
 
 
@@ -257,11 +261,10 @@ figure <- pdf5 %>%
        proceedinds text analysis from 2001 through 2020",
        subtitle = "Figure shows the rank of top 100 words of 2001 (left) 
        and 2020 (right) <b style='color:red;'>NCWSS</b> annual meeting proceedings. 
-       Common weed species names are highlighed to describe 
+       Common weed species names are highlighed to <br> describe 
        their change across 20 years.", 
        y= "Rank",
-       caption = "Visualization: @maxwelco adapted from 
-       @JaredBraggins | Source: NCWSS") 
+       caption = "Visualization: @maxwelco adapted from @JaredBraggins | Source: NCWSS") 
 
 
 #Export plot 
@@ -280,5 +283,5 @@ This post will be available soon at the [Open Weed Science](https://www.openweed
 
 ---
 
-I good source to learn [Tidy Text](https://juliasilge.com/blog/learn-tidytext-learnr/) by Julia Silge.
+Click [here]((https://juliasilge.com/blog/learn-tidytext-learnr/)) to learn more about Tidy Text with Julia Silge.
 

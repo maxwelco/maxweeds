@@ -67,7 +67,7 @@ Em Nebraska, comecei a analisar meus experimentos com programas estatísticos da
 <img src="teaching.jpeg" class="center-block" alt="ROpenSci Unconference" style="width:60%;">
 
 
-Atualmente trabalho remotamente para a Universidade de Wisconsin-Madison e sou professor de Biologia e Manejo de Planta Daninha e Programação em R na Universidade do Oeste Paulista.
+Atualmente trabalho remotamente para a Universidade de Wisconsin-Madison e dou consulturias sobre manejo de plantas daninhas e análise de dados.
 
 
 <img src="team.jpg" class="center-block" alt="CZI huddle" style="width:60%;">

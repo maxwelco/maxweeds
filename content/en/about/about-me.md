@@ -70,7 +70,7 @@ In Nebraska, I started to analyze my research studies with the statistical progr
 <img src="teaching.jpeg" class="center-block" alt="ROpenSci Unconference" style="width:60%;">
 
 
-I currently work remotely for the University of Wisconsin-Madison and I am a professor of Weed Biology and Management and Programming in R at the Western São Paulo University. 
+I currently work remotely for the University of Wisconsin-Madison and a consultant on weed management and data analysis. 
 
 <img src="team.jpg" class="center-block" alt="CZI huddle" style="width:60%;">
 
