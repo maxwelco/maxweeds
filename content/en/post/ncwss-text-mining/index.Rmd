@@ -35,7 +35,7 @@ knitr::opts_chunk$set(
 
 
 
-This text analysis is part of my abstract (co-authored with Rodrigo Werle and Sarah Marinho) presented at the North Central Weed Science Society (**NCWSS**) meeting that was held remotely in December 2020. Here I am presenting part of that abstract, the **weed species** ranked among top 100 words from 2001 through 2020. I am adding to this analysis the 2020 meeting proceedings. Also, I am running the text analysis with much less coding that I have done for the **NCWSS** meeting. That is what I am going to show in this analysis. If you just want to see the figure, please scroll to the bottom of this page. 
+This text analysis is part of my abstract (co-authored with [Rodrigo Werle](https://twitter.com/WiscWeeds) and Sarah [Marinho](https://twitter.com/SarahMarinho20)) presented at the North Central Weed Science Society (**NCWSS**) meeting that was held remotely in December 2020. Here I am presenting part of that abstract, the **weed species** ranked among top 100 words from 2001 through 2020. I am adding to this analysis the 2020 meeting proceedings. Also, I am running the text analysis with much less coding that I have done for the **NCWSS** meeting. That is what I am going to show in this analysis. If you just want to see the figure, please scroll to the bottom of this page. 
 
 
 First we have to load the packages needed for this analysis. Please run the codes below: 
@@ -92,8 +92,10 @@ Now that we have a tidy tibble, we can proceed with the [tokenization](https://w
 pdf1 <- pdf %>% 
   unnest(text) %>% # pdfs_text is a list
   mutate(text = str_to_lower(text), # making all text lower case
-         text = str_replace(text, "2,4-d", "twofourd"), # need to replace it
-         text = str_replace(text, "marestail", "horseweed")) %>% 
+         text = str_replace(text, "2,4-d", 
+                            "twofourd"), # need to replace it
+         text = str_replace(text, "marestail", 
+                            "horseweed")) %>% # marestail = horseweed
   unnest_tokens(word, text, strip_numeric = TRUE)
 
 pdf1 %>% 
@@ -159,8 +161,12 @@ In this analysis I am interested only on weeds present in the top 100 words in 2
 
 ```{r}
 pdf5 <- pdf4 %>% 
-  mutate(highlight = if_else(word %in% c("amaranth", "palmer", "kochia", "horseweed", "grass", "nightshade", "waterhemp", "velvetleaf", "ragweed", "sunflower",
-                                            "foxtail"), TRUE, FALSE),
+  mutate(highlight = if_else(word %in% c("amaranth", "palmer", 
+                                         "kochia", "horseweed", 
+                                         "grass", "nightshade", 
+                                         "waterhemp", "velvetleaf", 
+                                         "ragweed", "sunflower",
+                                         "foxtail"), TRUE, FALSE),
        variable_col = if_else(highlight == TRUE, word, "NA"))
 
 pdf5 %>% 

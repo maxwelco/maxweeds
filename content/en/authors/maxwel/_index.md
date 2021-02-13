@@ -45,5 +45,5 @@ social:
 superuser: true
 ---
 
-I am a PhD research scientist at University of Wisconsin-Madison and Professor at Western São Paulo University. I am also a consultant, a [speaker](/talks) and I teach Biology and Management of Weed Species and Data Science to undergrad and graduate students. Contrary to popular belief, I do research in weed but not that kind of weed. I am passionate about plant science, data science, and programming. 
+I am a PhD research scientist at University of Wisconsin-Madison and a [Rstudio Tidyverse Instructor](https://education.rstudio.com/trainers/people/oliveira+maxwel/). I am also a consultant, a [speaker](/talks) and Professor. I teach Biology and Management of Weed Species and Data Science to undergrad and graduate students. Also, I help growers to improve decision-making on weed management. Contrary to popular belief, I do research in weed but not that kind of weed. I am passionate about plant science, data science, and programming. 
 
