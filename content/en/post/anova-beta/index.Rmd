@@ -249,12 +249,10 @@ The black dot represents the mean waterhemp control whereas the purple represent
 
 > *CLD* function
 
-```{r message=FALSE}
+```
 cld <-CLD(lsmeans$emmeans, alpha=0.05, Letters=letters, adjust="none", reversed = TRUE)
 cld 
 ```
-
-
 
 ## Warning
 
@@ -263,6 +261,13 @@ cld
 "The CLD function and methods are deprecated. Compact-letter displays (CLDs) encourage a misleading interpretation of significance testing by visually grouping means whose comparisons have P > alpha as though they are equal. However, failing to prove two means are different does not prove that they are the same. In addition, CLDs make a hard distinction between P values nearly equal to alpha but on opposite sides."
 ```
 
+- Some people have told me about CLD not working anymore. A solution is to use the cld function of multcomp package.
+
+```{r}
+library(multcomp)
+cld <- cld(lsmeans$emmeans, alpha=0.05, Letters=letters, adjust="none", reversed = TRUE)
+cld
+```
 
 
 # Figure 
