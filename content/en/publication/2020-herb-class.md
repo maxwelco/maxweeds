@@ -14,7 +14,7 @@ title = "Classificação dos herbicidas no Brasil"
 
 url_code = ""
 url_dataset = ""
-url_pdf = "pdf/2020-herb-class.pdf"
+url_pdf = "pdf/2020-classification.pdf"
 url_project = ""
 url_slides = ""
 url_video = ""
