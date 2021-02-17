@@ -10,11 +10,11 @@ publication = "Extension bulletin"
 publication_short = ""
 selected = false
 
-title = "Injúrias causadas por residual de herbicidas na cultura da cebola"
+title = "Soybean injury as influenced by synthetic auxin formulation and spray additives"
 
 url_code = ""
 url_dataset = ""
-url_pdf = "pdf/2020-onion-pub.pdf"
+url_pdf = "pdf/2020-hoop-pub.pdf"
 url_project = ""
 url_slides = ""
 url_video = ""
