@@ -15,7 +15,7 @@ subtitle:
 summary: Analysis of weed competition in additive design
 tags:
 - academia
-title: Making Available R Codes for Crop-Weed Competition Research
+title: Data Analysis of Crop-Weed Competition in Additive-Design 
 ---
 
 ```{r include=FALSE}
