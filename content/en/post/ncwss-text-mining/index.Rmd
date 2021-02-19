@@ -38,7 +38,7 @@ knitr::opts_chunk$set(
 
 
 This text analysis is part of my [poster](NCWSS_POSTER.pdf) (co-authored with [Rodrigo Werle](https://twitter.com/WiscWeeds) and [Sarah Marinho](https://twitter.com/SarahMarinho20)) presented at the 2020 Virtual North Central Weed Science Society [NCWSS](http://ncwss.org/) annual meeting (December 2020). Here I am presenting part of that abstract focused on **weed species** ranked amongst the top 100 words from 2001 through 2020 (I am adding the 2020 meeting proceedings to this analysis). I am also running the text analysis with less coding than for the 2020 **NCWSS** meeting which is what I am going to show in this analysis. If you are only interested in the final figure, please scroll to the bottom of this page.
-
+ 
 ![](ncwss.png)
 
 
