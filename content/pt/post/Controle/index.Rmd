@@ -1,20 +1,20 @@
 ---
-categories: []
-date: "2020-05-19T00:00:00Z"
-draft: false
-featured: false
+title: "Análise de Controle de Plantas Daninhas"
+date: '2020-05-19T00:00:00Z'
+draft: no
+featured: no
 image:
   caption: 'Imagem: [**Ruthson Zimmerman**](https://unsplash.com/photos/FVwG5OzPuzo)'
-  focal_point: ""
-  preview_only: false
-lastmod: "2020-11-03T00:00:00Z"
+  focal_point: ''
+  preview_only: no
+lastmod: '2020-11-03T00:00:00Z'
 projects: []
 subtitle: ''
 summary: Passo a posso com o uso da ANOVA para analisar o controle plantas daninhas
 tags:
 - ANOVA
 - Estatística
-title: 'Análise de Controle de Plantas Daninhas'
+categories: []
 ---
 
 ```{r include=FALSE}
@@ -26,6 +26,7 @@ library(emmeans)
 library(RCurl)
 library(kableExtra)
 library(car)
+library(multcomp)
 ```
 
 
@@ -236,7 +237,7 @@ O ponto preto é a média do controle do herbicida e o roxo é o intervalo de co
 > Função *CLD* 
 
 ```{r message=FALSE}
-cld <-CLD(lsmeans$emmeans, alpha=0.05, Letters=letters, adjust="none", reversed = TRUE)
+cld <- cld(lsmeans$emmeans, alpha=0.05, Letters=letters, adjust="none", reversed = TRUE)
 cld 
 ```
 

@@ -1,26 +1,25 @@
 ---
-categories: []
-date: "2020-05-19T00:00:00Z"
-draft: false
-featured: false
+title: "Análise de Controle de Plantas Daninhas"
+date: '2020-05-19T00:00:00Z'
+draft: no
+featured: no
 image:
   caption: 'Imagem: [**Ruthson Zimmerman**](https://unsplash.com/photos/FVwG5OzPuzo)'
-  focal_point: ""
-  preview_only: false
-lastmod: "2020-11-03T00:00:00Z"
+  focal_point: ''
+  preview_only: no
+lastmod: '2020-11-03T00:00:00Z'
 projects: []
 subtitle: ''
 summary: Passo a posso com o uso da ANOVA para analisar o controle plantas daninhas
 tags:
 - ANOVA
 - Estatística
-title: 'Análise de Controle de Plantas Daninhas'
+categories: []
 ---
 
-<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
-<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
-<link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+<script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
 
 
 <p>O controle de plantas daninhas com herbicidas é um experimento comum realizado na pesquisa de plantas daninhas. Geralmente, os experimentos são organizados em delineamento em blocos casualizados com vários tratamentos (herbicidas). Dias após o tratamento (DAT), uma nota de controle em percentagem (%) é dada às plantas daninhas. A percentagem no controle de plantas daninhas varia de 0% (plantas sem injúrias) e 100% (plantas completamente controladas). Portanto, antes de iniciar os experimentos, o pesquisador sabe que os valores de controle variam entre 0 a 100%.</p>
@@ -120,6 +119,14 @@ library(lmerTest)</code></pre>
 <p>Função <em>glmmTMB</em></p>
 </blockquote>
 <pre class="r"><code>model &lt;- glmmTMB(control ~ herbicide + (1|year/rep), beta_family(link = &quot;logit&quot;), data=dado)</code></pre>
+<pre><code>## Warning in Matrix::sparseMatrix(dims = c(0, 0), i = integer(0), j =
+## integer(0), : &#39;giveCsparse&#39; has been deprecated; setting &#39;repr = &quot;T&quot;&#39; for you
+
+## Warning in Matrix::sparseMatrix(dims = c(0, 0), i = integer(0), j =
+## integer(0), : &#39;giveCsparse&#39; has been deprecated; setting &#39;repr = &quot;T&quot;&#39; for you
+
+## Warning in Matrix::sparseMatrix(dims = c(0, 0), i = integer(0), j =
+## integer(0), : &#39;giveCsparse&#39; has been deprecated; setting &#39;repr = &quot;T&quot;&#39; for you</code></pre>
 </div>
 <div id="anova" class="section level2">
 <h2>Anova</h2>
@@ -156,7 +163,7 @@ library(lmerTest)</code></pre>
 <p>Função <em>emmip</em></p>
 </blockquote>
 <pre class="r"><code>emmip(model, ~herbicide, type=&quot;response&quot;) + coord_flip()</code></pre>
-<p><img src="/pt/post/Controle/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Esta figura ajuda a visualizar o efeito do herbicida no controle de caruru. É mais útil em experiemnts de fatorial.</p>
 </div>
 <div id="médias-marginais-estimadas-médias-dos-quadrados-mínimos" class="section level4">
@@ -211,7 +218,7 @@ lsmeans</code></pre>
 <p>Função <em>plot</em></p>
 </blockquote>
 <pre class="r"><code>plot(lsmeans, ~ herbicide, comparisons =TRUE, type=&quot;response&quot;, alpha=0.05, adjust=&quot;none&quot;)</code></pre>
-<p><img src="/pt/post/Controle/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>O ponto preto é a média do controle do herbicida e o roxo é o intervalo de confiança. A seta vermelha é uma comparação entre tratamentos; se uma seta vermelha não se sobrepõe, os tratamentos são diferentes. Veja os contrastes de <em>lsmeans</em> para verificar novamente.</p>
 </div>
 </div>
@@ -226,10 +233,8 @@ lsmeans</code></pre>
 <blockquote>
 <p>Função <em>CLD</em></p>
 </blockquote>
-<pre class="r"><code>cld &lt;-CLD(lsmeans$emmeans, alpha=0.05, Letters=letters, adjust=&quot;none&quot;, reversed = TRUE)</code></pre>
-<pre><code>## Warning: &#39;CLD&#39; will be deprecated. Its use is discouraged.
-## See &#39;?cld.emmGrid&#39; for an explanation. Use &#39;pwpp&#39; or &#39;multcomp::cld&#39; instead.</code></pre>
-<pre class="r"><code>cld </code></pre>
+<pre class="r"><code>cld &lt;- cld(lsmeans$emmeans, alpha=0.05, Letters=letters, adjust=&quot;none&quot;, reversed = TRUE)
+cld </code></pre>
 <pre><code>##  herbicide response      SE df lower.CL upper.CL .group
 ##  A            0.975 0.00793 22    0.952    0.987  a    
 ##  B            0.964 0.01011 22    0.936    0.980  a    
@@ -264,7 +269,7 @@ lsmeans</code></pre>
   theme(axis.title = element_text(size=16),
         axis.text = element_text(size=15),
         legend.position = &quot;none&quot;) </code></pre>
-<p><img src="/pt/post/Controle/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>As médias de controle de caruru (%) e o intervalo de confiança de cada herbicida são exibidos em uma figura do gráfico <em>ggplot</em>.</p>
 </div>
 <div id="gráfico-de-barras-com-agrupamento-de-letras" class="section level5">
@@ -280,7 +285,7 @@ lsmeans</code></pre>
         axis.text = element_text(size=15),
         legend.position = &quot;none&quot;) +
   coord_flip()</code></pre>
-<p><img src="/pt/post/Controle/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 </div>
 <div id="tabela" class="section level2">
@@ -296,7 +301,7 @@ lsmeans</code></pre>
 <pre class="r"><code>cld %&gt;%
   kbl() %&gt;%
   kable_classic_2(full_width = F)</code></pre>
-<table class=" lightable-classic-2" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<table class=" lightable-classic-2" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
