@@ -13,7 +13,7 @@ lastmod: "2018-10-10T00:00:00Z"
 projects: []
 subtitle: ''
 summary: 'Check an handout developed to help corn and soybean farmers, agronomists, Ag educators and crop scouts identify potential herbicide injury symptoms on crops' 
-tags:
+tags: 
 - herbicide
 title: Herbicide Site of Action Key for Crop Injury Symptoms
 ---
