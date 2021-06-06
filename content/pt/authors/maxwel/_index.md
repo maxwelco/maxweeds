@@ -13,7 +13,7 @@ education:
   - course: BSc em Agronomia
     institution: Universidade Federal dos Vales do Jequitinhonha e Mucuri
     year: 2011
-email: ""
+
 interests:
 - Plantas daninhas
 - Compartilhamento de conhecimento
@@ -31,7 +31,7 @@ role: Pesquisador Associado
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
 #   form "mailto:your-email@example.com" or "#contact" for contact widget.
-social:
+
 social:
 - icon: twitter
   icon_pack: fab
